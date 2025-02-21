@@ -12,4 +12,7 @@ class Teacher {
   void changeName(String newName) {
     name = newName;
   }
+  void printName(){
+  println(" My Teacher name is " + name);
+  }
 }

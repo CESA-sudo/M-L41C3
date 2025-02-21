@@ -11,4 +11,8 @@ class Students {
     isFemale = tmpIsFemale;
     datamatikerTeam = tmpDatamatikerTeam;
   }
+  void printName(){
+    name = "Nami";
+  println(name + " is from team " + datamatikerTeam);
+  }
 }

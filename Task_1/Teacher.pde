@@ -1,4 +1,4 @@
-class Teacher {
+/*class Teacher {
   String name;
   int age;
   boolean isFemale;
@@ -15,4 +15,4 @@ class Teacher {
   void printName(){
   println(" My Teacher name is " + name);
   }
-}
+}*/

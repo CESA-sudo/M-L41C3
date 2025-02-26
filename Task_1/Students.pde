@@ -1,4 +1,4 @@
-class Students {
+/*class Students {
   String name;
   int age;
   boolean isFemale;
@@ -15,4 +15,4 @@ class Students {
     name = "Nami";
   println(name + " is from team " + datamatikerTeam);
   }
-}
+}*/

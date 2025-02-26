@@ -1,4 +1,4 @@
-/*boolean happy = true;
+boolean happy = true;
 int a=2;
 int b = 6;
 
@@ -46,4 +46,4 @@ void setup() {
 
 boolean iAmHappy() {
   return happy  ;
-}*/
+}

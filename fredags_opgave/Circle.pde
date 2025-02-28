@@ -1,6 +1,6 @@
 class Circle {
-  int xVal;
-  int yVal;
+
+
   int xPos;
   int yPos;
 
@@ -12,10 +12,10 @@ class Circle {
     rect(xPos, yPos, 50, 50 );
   }
 
-  void move() {
+  void move(int xVal, int yVal) {
 
-    xPos += xVal;
-    yPos += yVal;
-    display();
+    this.xPos += xVal;
+    this.yPos += yVal;
+    this.display();
   }
 }

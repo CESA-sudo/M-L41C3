@@ -2,8 +2,8 @@
  
  
 /*for (String r : rappers) {
- l++;
- println (l+". " +r);
+ t++;
+ println (t+". " +r);
  }*/
 
 /*String[] songs = {"Betty","Anglo Saxon", "Mafia", "Heaven and Hell","Holy Toast"};

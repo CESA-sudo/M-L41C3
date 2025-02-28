@@ -16,7 +16,7 @@ void draw () {
 
 
   for (int i =0; i<circles.length; i++) {
-    circles[i].move();
+    circles[i].move(1,1);
     
   }
 }

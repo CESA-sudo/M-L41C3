@@ -1,6 +1,4 @@
 class Circle {
-
-
   int xPos;
   int yPos;
 

@@ -29,7 +29,7 @@ class Team{
 		teamMates.add(teamMatename);
 	}
 
-	@Override
+	@Override// make it possible to compile without memeory
 	public String toString(){
 		String display = "Team: "+ name + " Rank: " + rank + "\nTeammates:\n";
 		for (String teamMate : teamMates){

@@ -28,8 +28,8 @@ class Main{
 		Team team4 = new Team ("Barcelona");
 		team4.setRank(4);
 		team4.addTeamMates("Lionel Messi");
-		team3.addTeamMates("Samuel Eto");
-		team3.addTeamMates("Ronaldinho");
+		team4.addTeamMates("Samuel Eto");
+		team4.addTeamMates("Ronaldinho");
 		System.out.println(team4.toString());
 
 		//team 5

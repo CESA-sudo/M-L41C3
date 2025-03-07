@@ -1,251 +1,96 @@
-PFont country;
-PFont groups;
-PImage Russia;
-PImage Egypt;
-PImage SaudiArabia;
-PImage Uruguay;
-PImage Portugal;
-PImage Spain;
-PImage Morocco;
-PImage Iran;
-PImage France;
-PImage Australia;
-PImage Peru;
-PImage Denmark;
-PImage Argentina;
-PImage Iceland;
-PImage Croatia;
-PImage Nigeria;
+PFont titleFont, countryFont;
+PImage[] flags;//array of flags
+String[][] groups = {
+  {"RUSSIA", "SAUDI ARABIA", "EGYPT", "URUGUAY"},
+  {"PORTUGAL", "SPAIN", "MOROCCO", "IRAN"},
+  {"FRANCE", "AUSTRALIA", "PERU", "DENMARK"},
+  {"ARGENTINA", "ICELAND", "CROATIA", "NIGERIA"}//this makes an array of groups that puts each array of countries inte groups
 
-
+};
+String[] groupTitles = {"GROUP A", "GROUP B", "GROUP C", "GROUP D"};//array of group name
+color[] groupColors = {#75E2FC, #D7E823, #75E2FC, #D7E823};//array of colors
+int boxWidth = 460, boxHeight = 45, flagWidth = 60, flagHeight = 45; //int size of the rect and flag
+int spacing = 20;
 
 void setup() {
-  size (1000, 500);
-  background (51, 31, 144);
-  groups = createFont( "Arial Bold", 20, true);
-  country = createFont("Lucida Sans Typewriter fed", 16, true);
-  Russia = loadImage("Russia.jpg");
-  SaudiArabia = loadImage("Saudi Arabia.jpg");
-  Egypt = loadImage("Egypt.jpg");
-  Uruguay = loadImage("Uruguay.jpg");
-  Portugal = loadImage("Portugal.jpg");
-  Spain = loadImage("Spain.jpg");
-  Morocco = loadImage("Morocco.jpg");
-  Iran = loadImage("Iran.jpg");
-  France = loadImage("France.jpg");
-  Australia = loadImage("Australia.jpg");
-  Peru = loadImage("Peru.jpg");
-  Denmark = loadImage("Denmark.jpg");
-  Argentina = loadImage("Argentina.jpg");
-  Iceland = loadImage("Iceland.jpg");
-  Croatia = loadImage("Croatia.jpg");
-  Nigeria = loadImage("Nigeria.jpg");
+  size(1000, 600);
+  background(20, 30, 60);
+  titleFont = createFont("Arial Bold", 20, true);// group title has Arial bold with font size 20
+  countryFont = createFont("Arial Bold", 24, true);//group title has Arial bold with font size 24
+
+  flags = new PImage[16];//initalise flags with 16 index size
+  String[] flagNames = {"Russia.jpg", "Saudi Arabia.jpg", "Egypt.jpg", "Uruguay.jpg",
+                        "Portugal.jpg", "Spain.jpg", "Morocco.jpg", "Iran.jpg",
+                        "France.jpg", "Australia.jpg", "Peru.jpg", "Denmark.jpg",
+                        "Argentina.jpg", "Iceland.jpg", "Croatia.jpg", "Nigeria.jpg"};
+                        
+  for (int i = 0; i < flags.length; i++) {
+    flags[i] = loadImage(flagNames[i]);//for loop that load image of flagNmaes index into flags index
+  }
 }
 
-// Top left
 void draw() {
-  textFont(groups, 20);
-  fill(117, 226, 252);
-  text("GROUP A", 120, 20);
+  for (int column = 0; column < 2; column++) {
+    for (int group = 0; group < 2; group++) {
 
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 30, 460, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(455, 30, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("RUSSIA", 120, 60);
-  image(Russia, 10, 30, 90, 40);
+      if (column == 0) {
+        int x =   spacing;
+        
+        int y = (group * 270) + spacing;
+        int groupIndex = column * 2 + group;
 
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 80, 460, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(455, 80, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("SAUDI ARABIA", 120, 110);
-  image(SaudiArabia, 10, 80, 90, 40);
+        // Dispalys group title
+        fill(groupColors[groupIndex]);
+        textFont(titleFont);
+        textAlign(CENTER);
+        text(groupTitles[groupIndex], x + boxWidth / 2, y);
 
+        // Draws rectangle
+        for (int i = 0; i < 4; i++) {
+          int boxY = y + (i + 1) * (boxHeight + 5);
 
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 130, 460, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(455, 130, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("EGYPT", 120, 160);
-  image(Egypt, 10, 130, 90, 40);
+          fill(255);
+          rect(x, boxY, boxWidth, boxHeight);
 
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 180, 460, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(455, 180, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("URUGUAY", 120, 210);
-  image(Uruguay, 10, 180, 90, 40);
+          // Adds Flag
+          image(flags[groupIndex * 4 + i], x, boxY, flagWidth, flagHeight);
 
+          // displays Team Name
+          fill(0);
+          textFont(countryFont);
+          textAlign(LEFT, CENTER);
+          text(groups[groupIndex][i], x + flagWidth + 10, boxY + boxHeight / 2);
+        }
+      } else {
+        int x =  width / 2 + spacing;
+        
+        int y = (group * 270) + spacing;
+        int groupIndex = column * 2 + group;
 
-  // bottom left
-  textFont(groups, 20);
-  fill(215, 232, 35);
-  text("GROUP B", 120, 250);
+        // Draw group title
+        fill(groupColors[groupIndex]);
+        textFont(titleFont);
+        textAlign(CENTER);
+        text(groupTitles[groupIndex], x + boxWidth / 2, y);
 
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 260, 460, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(455, 260, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("PORTUGAL", 120, 290);
-  image(Portugal, 10, 260, 90, 40);
+        // Draw teams
+        for (int i = 0; i < 4; i++) {
+          int boxY = y + (i + 1) * (boxHeight + 5);
 
+          fill(255);
+          rect(x, boxY, boxWidth, boxHeight);
 
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 310, 460, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(455, 310, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("SPAIN", 120, 340);
-  image(Spain, 10, 310, 90, 40);
+          // Flag
+          image(flags[groupIndex * 4 + i], x, boxY, flagWidth, flagHeight);
 
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 360, 460, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(455, 360, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("MOROCCO", 120, 390);
-  image(Morocco, 10, 360, 90, 40);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(10, 410, 460, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(455, 410, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("IRAN", 120, 440);
-  image(Iran, 10, 410, 90, 40);
-
-
-  //center piece
-  fill (255);
-  rectMode(CENTER);
-  rect(490, 90, 10, 900);
-
-  //Top Right
-  textFont(groups, 20);
-  fill(117, 226, 252);
-  text("GROUP C", 670, 20);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 30, 480, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(975, 30, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("FRANCE", 620, 60);
-  image(France, 510, 30, 90, 40);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 80, 480, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(975, 80, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("AUSTRALIA", 620, 110);
-  image(Australia, 510, 80, 90, 40);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 130, 480, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(975, 130, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("PERU", 620, 160);
-  image(Peru, 510, 130, 90, 40);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 180, 480, 40);
-  noStroke();
-  fill(117, 226, 252);
-  rect(975, 180, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("DENMARK", 620, 210);
-  image(Denmark, 510, 180, 90, 40);
-
-
-  //Bottom Right
-  textFont(groups, 20);
-  fill(215, 232, 35);
-  text("GROUP D", 670, 250);
-  
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 260, 480, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(975, 260, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("ARGENTINA", 620, 290);
-  image(Argentina, 510, 260, 90, 40);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 310, 480, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(975, 310, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("ICELAND", 620, 340);
-  image(Iceland, 510, 310, 90, 40);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 360, 480, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(975, 360, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("CROATIA", 620, 390);
-  image(Croatia, 510, 360, 90, 40);
-
-  fill (255);
-  rectMode(CORNER);
-  rect(510, 410, 480, 40);
-  noStroke();
-  fill(215, 232, 35);
-  rect(975, 410, 15, 40);
-  textFont(country, 36);
-  fill(0);
-  text("NIGERIA", 620, 440);
-  image(Nigeria, 510, 410, 90, 40);
+          // Team Name
+          fill(0);
+          textFont(countryFont);
+          textAlign(LEFT, CENTER);
+          text(groups[groupIndex][i], x + flagWidth + 10, boxY + boxHeight / 2);
+        }
+      }
+    }
+  }
+   
 }

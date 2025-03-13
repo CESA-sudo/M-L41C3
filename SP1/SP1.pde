@@ -1,4 +1,4 @@
-PFont groupFont, countryFont;
+/*PFont groupFont, countryFont;
 PImage[] flags;//array of flags
 String[][] groups = {
   {"RUSSIA", "SAUDI ARABIA", "EGYPT", "URUGUAY"},
@@ -27,6 +27,7 @@ void setup() {
   for (int i = 0; i < flags.length; i++) {
     flags[i] = loadImage(flagNames[i]);//for loop that load image of flagNmaes index into flags index
   }
+ 
 }
 
 void draw() {
@@ -94,3 +95,4 @@ void draw() {
     }
   }
 }
+*/

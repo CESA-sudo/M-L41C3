@@ -1,4 +1,4 @@
-/*PFont country;
+PFont country;
 PFont groups;
 PImage Russia;
 PImage Egypt;
@@ -149,6 +149,7 @@ void draw() {
   fill (255);
   rectMode(CENTER);
   rect(490, 90, 10, 900);
+  //line (520,0,520,height);
 
   //Top Right
   textFont(groups, 20);
@@ -248,4 +249,4 @@ void draw() {
   fill(0);
   text("NIGERIA", 620, 440);
   image(Nigeria, 510, 410, 90, 40);
-}*/
+}
